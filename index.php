@@ -28,7 +28,7 @@
                     </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Работы</a>
+                    <a class="nav-link" href="/stories.php">Работы</a>
                     </li>
 
                 <li class="nav-item">

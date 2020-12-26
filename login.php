@@ -28,7 +28,7 @@
                     </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Работы</a>
+                    <a class="nav-link" href="/stories.php">Работы</a>
                     </li>
 
                 <li class="nav-item">
@@ -59,19 +59,7 @@
                 <div class="col-sm-4 text-center">
                 
             <?php
-                session_start();
-                // Функция для генерации случайной строки
-                function generateCode($length=6) 
-                {
-                    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
-                    $code = "";
-                    $clen = strlen($chars) - 1;
-                    while (strlen($code) < $length)
-                            $code .= $chars[mt_rand(0,$clen)];
-                    return $code;
-                }
-
-
+              
                 if (!isset($_POST['entrance']))
                     echo '<h1 class="text-dark">Авторизация</h1>
                         <form name="entrance" class="form-group" method="post">
@@ -149,16 +137,16 @@
 
                             // БЕЗ ХЕША И АЙПИ
 
-                            
-                        require 'personal.php';
+                            echo '</div></div>';
+                            require 'personal.php';
                                                    
                         }
                        
                 }
                 ?>
-                    </div>
+                    
                 
-                </div>
+                
             </div>
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
