@@ -32,16 +32,11 @@
                     </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Рейтинг участников</a>
+                    <a class="nav-link" href="/rating.php">Рейтинг участников</a>
                     </li>
 
                 <li class="nav-item active"></li>
-                    <?php
-                    if (isset($_COOKIE))
-                        echo '<a class="nav-link pers_cab" href="/personal.php" style="color: #ffbb33;">Личный кабинет</a>';
-                    else
-                        echo '<a class="nav-link pers_cab" href="/login.php" style="color: #ffbb33;">Авторизация</a>';
-                    ?>
+                    <a class="nav-link pers_cab" href="/personal.php" style="color: #ffbb33;">Личный кабинет</a>
                     </li>
                 </ul>
 

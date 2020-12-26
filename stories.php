@@ -24,19 +24,19 @@
                 <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Главная</a>
+                    <a class="nav-link" href="/index.php">Главная</a>
                     </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Работы<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/stories.php">Работы<span class="sr-only">(current)</span></a>
                     </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Рейтинг участников</a>
+                    <a class="nav-link" href="/rating.php">Рейтинг участников</a>
                     </li>
 
                 <li class="nav-item"></li>
-                    <a class="nav-link pers_cab" href="/login.php" style="color: #ffbb33;">Личный кабинет</a>
+                    <a class="nav-link pers_cab" href="/login.php">Личный кабинет</a>
                     </li>
                 </ul>
                 
@@ -83,7 +83,8 @@
                                     <p class="text-secondary">'.$stories.'</p>
                                     </div><br>';
                             }
-
+                            
+                            echo '<span class="text-primary">Всего '.$rows_count.' работ</span><br><br>';
                                
                          
                                

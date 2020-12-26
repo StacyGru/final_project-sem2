@@ -23,52 +23,65 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Главная</a>
                     </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/stories.php">Работы</a>
                     </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/rating.php">Рейтинг участников</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/rating.php">Рейтинг участников<span class="sr-only">(current)</span></a>
                     </li>
 
                 <li class="nav-item"></li>
                     <a class="nav-link pers_cab" href="/login.php">Личный кабинет</a>
                     </li>
                 </ul>
-
                 
 
               <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Поиск по сайту" aria-label="Search">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Поиск</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Поиск по сайту" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Поиск</button>
                 </form>
-                </div>
+            </div>
             </nav>
 
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-sm-10">
-                        <h1 class="dark-text">Конкурс коротких рассказов с неожиданной концовкой</h1>
-                        <p class="text-secondary">Мы очень рады видеть вас на нашем сайте!<br><br>
-                            Вы можете зарегистрироваться в качестве автора и принять участие в нашем творческом конкурсе!<br>
-                            Если вы имеете немалый писательский опыт и богатое портфолио, то вы можете подать заявку и стать экспертом!<br>
-                            Если же вы не обладаете писательскими навыками, у вас есть возможность зарегистрироваться как читатель, насладиться
-                            захватывающими историями наших талантливых авторов и проголосовать за наилучшие по вашему мнению работы!<br>
+                        <?php
+                            $mysqli = mysqli_connect ('std-mysql', 'std_940', '12345678', 'std_940');   // подключение к БД
                             
-                        </p><br>
-                        <h3 class="text-danger">Правила нашего конкурса:</h3>
-                        <ul class="text-secondary">
-                            <li>каждый автор может выложить не более одной работы в каждой из 3 конкурсных категорий;</li>
-                            <li>каждый читатель может отдать по 1 голосу любым 5 понравившимся работам;</li>
-                            <li>каждый эксперт может отдать по 1 звезде (1 звезда = 10 голосов) любым 5 понравившимся работам.</li>
-                            </ul>
-                        </div>
-                    </div>
+                            if (mysqli_connect_errno())
+                                return 'Ошибка подключения к БД: '.mysqli_connect_error();
+                    
+                            $sql_rate = mysqli_query($mysqli, "SELECT * FROM authors RIGHT JOIN stories USING(id) ORDER BY score DESC;");  // запрос на рейтинг по кол-ву баллов
+
+                            if (!mysqli_errno($mysqli))
+                            {
+                                echo '<table rules="all" class="table">';   // начало таблицы БД
+                                echo '<tr><th>Место в рейтинге</th>
+                                    <th>Количество очков</th>
+                                    <th>Автор</th></tr>';
+
+                                $i = 1;
+
+                                while ($row = mysqli_fetch_assoc($sql_rate)) // пока есть записи
+                                {                                           // выводим каждую запись как строку таблицы
+                                    echo '<tr><td>'.$i.'</td>
+                                        <td>'.$row['score'].'</td>
+                                        <td>'.$row['nickname'].'</td></tr>'; 
+                                    $i++;
+                                }
+                                echo '</table>'; // конец таблицы
+                            }
+                            
+                        ?>
                 </div>
+                    </div>
+                        </div>
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
